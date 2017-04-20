@@ -46,8 +46,9 @@ params['template_path'] = './data/templates.p'
 params['nlg_slots_path'] = './data/nlg_slot_set.txt'
 params['nlg_model_path'] = './data/pretrained/lstm_tanh_[1470015675.73]_115_120_0.657.p'
 
-shutil.copyfile('settings/config_'+params['db']+'.py', 'config.py')
-from config import *
+config = importlib.import_module('settings.config_'+params['db'])
+agent_params = config.agent_params
+dataset_params = config.dataset_params
 for k,v in dataset_params[params['db']].iteritems():
     params[k] = v
 for k,v in agent_params[agent_map[params['agent_type']]].iteritems():

@@ -46,6 +46,7 @@ import argparse, json, shutil, sys, os, random, copy
 import numpy as np
 import cPickle as pkl
 import datetime
+import importlib
 
 agent_map = {'rule-no'  :   'nl-rule-no',
         'rl-no'         :   'simple-rl-no',
@@ -77,8 +78,9 @@ params['err_prob'] = 0.5
 params['dontknow_prob'] = 0.5
 params['sub_prob'] = 0.05
 params['max_first_turn'] = 5
-shutil.copyfile('settings/config_'+params['db']+'.py', 'config.py')
-from config import *
+config = importlib.import_module('settings.config_'+params['db'])
+agent_params = config.agent_params
+dataset_params = config.dataset_params
 for k,v in dataset_params[params['db']].iteritems():
     params[k] = v
 

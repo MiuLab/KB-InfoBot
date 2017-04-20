@@ -111,14 +111,14 @@ optional arguments:
                         what you gave for training). Pass "pretrained" to use
                         pretrained models.
 ```
-Example:
+Run without the `--model_name` argument to test on pre-trained models. Example:
 ```sh
-python sim.py --agent rl-soft --db imdb-M --model_name rl_soft_example.m
+python sim.py --agent rl-soft --db imdb-M
 ```
 
 Hyperparameters
 -------------------------------------------------
-The following agent options can be specified in the config.py file-
+The default hyperparameters for each KB split are in `settings/config_<db_name>.py`. These include:
 1. RL agent options-
   * `nhid`: Number of hidden units
   * `batch`: Batch size
