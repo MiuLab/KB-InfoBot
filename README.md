@@ -5,39 +5,18 @@ This repository contains all the code and data accompanying the paper [Towards E
 
 Prerequisites
 --------------------------------------------------
-* [Bleeding-edge Theano](http://deeplearning.net/software/theano/install.html)
-
-```sh
-pip install --upgrade --user https://github.com/Theano/Theano/archive/master.zip
-```
-
-* [Bleeding-edge Lasagne](https://lasagne.readthedocs.io/en/latest/user/installation.html)
-
-```sh
-pip install --upgrade --user https://github.com/Lasagne/Lasagne/archive/master.zip
-```
-
-* [NLTK](http://www.nltk.org/)
-
-```sh
-pip install --user nltk
-```
-
-...Also download nltk data:
-
+See [requirements.txt](./requirements.txt) for required packacges. Also download nltk data:
 ```sh
 python -m nltk.downloader all
 ```
-
-* Numpy
-* IMPORTANT: Download the data and pretrained models from [here](https://drive.google.com/file/d/0B7aCzQIaRTDUMDF1S3NVajlHTFk/view?usp=sharing), unpack the tar and place it at the root of the repository.
+IMPORTANT: Download the data and pretrained models from [here](https://drive.google.com/file/d/0B7aCzQIaRTDUMDF1S3NVajlHTFk/view?usp=sharing), unpack the tar and place it at the root of the repository.
 
 Code Organization
 --------------------------------------------------
-* All agents are in [](./deep_dialog/agents/) directory
-* The user-simulator along with a template based and seq2seq NLG is in [](./deep_dialog/usersims/) directory
-* [](./deep_dialog/dialog_system/) contains classes for dialog manager and the database
-* All datasets (KB tables) are in [](./deep_dialog/data/)
+* All agents are in [deep_dialog/agents/](./deep_dialog/agents/) directory
+* The user-simulator along with a template based and seq2seq NLG is in [deep_dialog/usersims/](./deep_dialog/usersims/) directory
+* [deep_dialog/dialog_system/](./deep_dialog/dialog_system/) contains classes for dialog manager and the database
+* All datasets (KB tables) are in [deep_dialog/data/](./deep_dialog/data/)
 
 Interact with the pre-trained InfoBot!
 --------------------------------------------------
@@ -59,6 +38,7 @@ optional arguments:
 
 Training
 --------------------------------------------------
+To train the RL agents, call `train.py` with the following options:
 ```sh
 $ python train.py --help
 usage: train.py [-h] [--agent AGENT_TYPE] [--db DB] [--model_name MODEL_NAME]
@@ -90,9 +70,14 @@ optional arguments:
                         value
   --reload RELOAD       Reload previously saved model (0-no, 1-yes)
 ```
+Example:
+```sh
+python train.py --agent e2e-soft --db imdb-M --model_name e2e_soft_example.m
+```
 
 Testing
 ----------------------------------------------------
+To evaluate both RL and Rule agents, call `sim.py` with the following options:
 ```sh
 $ python sim.py --help
 usage: sim.py [-h] [--agent AGENT_TYPE] [--N N] [--db DB]
@@ -126,6 +111,10 @@ optional arguments:
                         what you gave for training). Pass "pretrained" to use
                         pretrained models.
 ```
+Example:
+```sh
+python sim.py --agent rl-soft --db imdb-M --model_name rl_soft_example.m
+```
 
 Hyperparameters
 -------------------------------------------------
@@ -146,18 +135,6 @@ The following agent options can be specified in the config.py file-
   * `max_req`: Maximum requests allowed per slot
   * `frac`: Ratio to initial slot entropy, below which if the slot entropy falls it is not requested anymore
   * `upd`: Update count for bayesian belief tracking
-
-Examples
---------------------------------------------------
-Here I give the commands to call each agent with default/optimal settings. For rule agents we will call `sim.py`, for RL agents we will call `train.py`. 
-
-```sh
-python sim.py --agent rl-soft --db imdb-M --model_name rl_soft_example.m
-```
-
-```sh
-python train.py --agent e2e-soft --db imdb-M --model_name e2e_soft_example.m
-```
 
 ## Note
 Make sure to add `THEANO_FLAGS=device=cpu,floatX=float32` before any command if you are running on a CPU.
