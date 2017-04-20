@@ -16,7 +16,6 @@ Code Organization
 * All agents are in [deep_dialog/agents/](./deep_dialog/agents/) directory
 * The user-simulator along with a template based and seq2seq NLG is in [deep_dialog/usersims/](./deep_dialog/usersims/) directory
 * [deep_dialog/dialog_system/](./deep_dialog/dialog_system/) contains classes for dialog manager and the database
-* All datasets (KB tables) are in [deep_dialog/data/](./deep_dialog/data/)
 
 Interact with the pre-trained InfoBot!
 --------------------------------------------------
