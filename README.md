@@ -1,4 +1,4 @@
-InfoBot
+KB-InfoBot
 ==================================================
 
 This repository contains all the code and data accompanying the paper [Towards End-to-End Reinforcement Learning of Dialogue Agents for Information Access](https://arxiv.org/abs/1609.00777).
