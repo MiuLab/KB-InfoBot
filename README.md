@@ -143,10 +143,10 @@ If you use this code please cite the following:
 
 Dhingra, B., Li, L., Li, X., Gao, J., Chen, Y. N., Ahmed, F., & Deng, L. (2017). Towards End-to-end reinforcement learning of dialogue agents for information access. ACL.
 ```
-@article{dhingra2017towards,
+@inproceedings{dhingra2017towards,
   title={Towards End-to-end reinforcement learning of dialogue agents for information access},
   author={Dhingra, Bhuwan and Li, Lihong and Li, Xiujun and Gao, Jianfeng and Chen, Yun-Nung and Ahmed, Faisal and Deng, Li},
-  journal={ACL},
+  booktitle={Proceddings of ACL},
   year={2017}
 }
 ```
